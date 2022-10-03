@@ -1,5 +1,7 @@
 package com.wonddak.backjoon_kt
 
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.util.*
 
 class Chapter1 {
@@ -80,6 +82,17 @@ class Chapter1 {
         println(sc.nextInt() - (2541 - 1998))
     }
 
+    fun solution_3003() {
+        val bf = BufferedReader(InputStreamReader(System.`in`))
+        val answer = StringBuilder()
+        bf.readLine().split(" ") .zip(listOf(1,1,2,2,2,8)) {read,standard ->
+            answer.append(standard - read.toInt())
+            answer.append(" ")
+        }
+        println(answer.toString())
+
+    }
+
     fun solution_10430() {
         val sc: Scanner = Scanner(System.`in`)
         val a = sc.nextInt()
@@ -111,5 +124,5 @@ class Chapter1 {
 }
 
 fun main() {
-    Chapter1().solution_2588()
+    Chapter1().solution_3003()
 }

@@ -6,4 +6,3 @@
 블로그 주소  
 ---
 https://blog.naver.com/jmseb3/  
-https://wonddak.tistory.com/
