@@ -120,9 +120,22 @@ class Chapter1 {
 
     }
 
+    fun solution_11382() {
+        val bf = BufferedReader(InputStreamReader(System.`in`))
+
+        try {
+            println(bf.readLine().split(" ").map { it.toLong() }.sumOf { it })
+        }catch (e:Exception) {
+            e.printStackTrace()
+        }
+
+
+        bf.close()
+    }
+
 
 }
 
 fun main() {
-    Chapter1().solution_3003()
+    Chapter1().solution_11382()
 }

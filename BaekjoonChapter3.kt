@@ -225,9 +225,16 @@ class Chapter3 {
 
     }
 
+    fun solution_25314() {
+        val n = bf.readLine().toInt()
+        val cnt = n / 4
+
+        println("long ".repeat(cnt)+"int")
+    }
+
 
 }
 
 fun main() {
-    Chapter3().solution_1110()
+    Chapter3().solution_25314()
 }

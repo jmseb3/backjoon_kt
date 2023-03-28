@@ -10,6 +10,29 @@ class Chapter4 {
 
     private val bf = BufferedReader(InputStreamReader(System.`in`))
 
+    //https://www.acmicpc.net/problem/10807
+    fun solution_10807() {
+        try {
+            val n = bf.readLine().toInt()
+            val array = bf.readLine().split(" ").map { it.toInt() }
+            val v = bf.readLine().toInt()
+            println(array.filter { it == v }.size)
+        } catch (e: Exception) {
+
+        }
+    }
+
+    //https://www.acmicpc.net/problem/10871
+    fun solution_10871() {
+        try {
+            val (n,x) = bf.readLine().split(" ").map { it.toInt() }
+            val array = bf.readLine().split(" ").map { it.toInt() }
+            println(array.filter { it < x }.joinToString(" "))
+        } catch (e: Exception) {
+
+        }
+    }
+
     //https://www.acmicpc.net/problem/10818
     fun solution_10818() {
         try {
@@ -42,30 +65,43 @@ class Chapter4 {
         }
     }
 
-    //https://www.acmicpc.net/problem/2557
-    fun solution_2557() {
-        try {
-            val a = bf.readLine().toInt()
-            val b = bf.readLine().toInt()
-            val c = bf.readLine().toInt()
-            var cal = (a * b * c)
-            val numbers = IntArray(10) { 0 }
-            while (true) {
-                if (cal >= 10) {
-                    numbers[cal % 10] += 1
-                    cal /= 10
-                } else {
-                    numbers[cal] += 1
-                    break
-                }
-
+    //https://www.acmicpc.net/problem/10810
+    fun solution_10810() {
+        val (n,m) = bf.readLine().split(" ").map { it.toInt() }
+        val array = IntArray(n)
+        for ( idx in 1..m) {
+            val (i,j,k) = bf.readLine().split(" ").map { it.toInt() }
+            for (index in i-1 until j) {
+                array[index] = k
             }
-            for (i in 0..9) {
-                println(numbers[i])
-            }
-        } catch (e: Exception) {
-            println(e)
         }
+        println(array.joinToString(" "))
+    }
+
+    //https://www.acmicpc.net/problem/10813
+    fun solution_10813() {
+        val (n,m) = bf.readLine().split(" ").map { it.toInt() }
+        val array = IntArray(n) {it+1}
+        for ( idx in 1..m) {
+            val (i,j) = bf.readLine().split(" ").map { it.toInt() - 1 }
+            if (i == j) {
+                continue
+            }
+            val temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+        }
+        println(array.joinToString(" "))
+    }
+
+    //https://www.acmicpc.net/problem/5597
+    fun solution_5597() {
+        val array = (1..30).toMutableSet()
+        for (i in 1 .. 28) {
+            val n = bf.readLine().toInt()
+            array.remove(n)
+        }
+        println(array.joinToString("\n"))
 
     }
 
@@ -82,6 +118,25 @@ class Chapter4 {
         } catch (e: Exception) {
             println(e)
         }
+    }
+
+    //https://www.acmicpc.net/problem/10811
+    fun solution_10811() {
+        val (n,m) = bf.readLine().split(" ").map { it.toInt() }
+        val array = IntArray(n) {it+1}
+        for ( idx in 1..m) {
+            val (i,j) = bf.readLine().split(" ").map { it.toInt() - 1 }
+            if (i == j) {
+                continue
+            }
+            val mid: Int = (i + j) / 2
+            for (index in i..mid) {
+                val temp = array[index]
+                array[index] = array[j - index + i]
+                array[j - index + i] = temp
+            }
+        }
+        println(array.joinToString(" "))
     }
 
     //https://www.acmicpc.net/problem/1546
@@ -103,63 +158,18 @@ class Chapter4 {
             println(e)
         }
     }
-
-    //https://www.acmicpc.net/problem/8958
-    fun solution_8958() {
-        try {
-            val n = bf.readLine().toInt()
-            for (i in 0 until n) {
-                val list = bf.readLine()
-                var sum = 0
-                var cnt = 0
-                list.forEach {
-                    if(it == 'O'){
-                        cnt +=1
-                    }else{
-                        cnt = 0
-                    }
-                    sum +=cnt
-                }
-                println(sum)
-            }
-
-
-        } catch (e: Exception) {
-            println(e)
-        }
-    }
-        //https://www.acmicpc.net/problem/4344
-    fun solution_4344() {
-        try {
-            val c = bf.readLine().toInt()
-            for (i in 0 until c) {
-                val st = StringTokenizer(bf.readLine())
-                val n = st.nextToken().toInt()
-                val list  = mutableListOf<Double>()
-                for (j in 0 until n){
-                    list.add(st.nextToken().toDouble())
-                }
-                val avg = (list.sumOf { it } / n)
-                var cnt = 0
-                list.forEach {
-                    if(it >avg){
-                        cnt +=1
-                    }
-                }
-                val percent = cnt.toDouble() / n *100
-
-                println("%.3f%%".format(percent))
-            }
-
-
-        } catch (e: Exception) {
-            println(e)
-        }
-    }
-
-
 }
 
 fun main() {
-    Chapter4().solution_4344()
+    val bf = BufferedReader(InputStreamReader(System.`in`))
+    val start = System.currentTimeMillis()
+//    val array = bf.readLine().split(" ").map { it.toInt() }
+    val st = StringTokenizer(bf.readLine())
+    val array = IntArray(10)
+    for (index in 0 until 10) {
+        array[index] = st.nextToken().toInt()
+    }
+    println(array.joinToString(" "))
+    val end = System.currentTimeMillis()
+    println("걸린 시간 : ${end-start}")
 }
