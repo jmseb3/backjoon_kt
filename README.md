@@ -5,4 +5,5 @@
 
 블로그 주소  
 ---
-https://blog.naver.com/jmseb3/  
+~~https://blog.naver.com/jmseb3/~~
+https://velog.io/@jmseb3
